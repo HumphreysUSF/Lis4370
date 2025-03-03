@@ -1,0 +1,54 @@
+# Load necessary dataset
+data(mtcars)
+
+# View the first six rows
+head(mtcars, 6)
+
+# Determine if generic functions can be applied
+summary(mtcars)  # Summarize dataset
+plot(mtcars)     # Plot dataset
+
+# Check the class of the dataset
+class(mtcars)
+
+# Check the base type of the dataset
+typeof(mtcars)
+
+# --- S3 System Example ---
+
+# Define an S3 object
+student_s3 <- list(name = "John Doe", age = 22, GPA = 3.8)
+
+# Assign class to the object
+class(student_s3) <- "student"
+
+# Define an S3 method for printing
+print.student <- function(x) {
+  cat("Student Name:", x$name, "\nAge:", x$age, "\nGPA:", x$GPA, "\n")
+}
+
+# Call the method
+print(student_s3)
+
+# Check if the object belongs to S3
+is.object(student_s3) && !isS4(student_s3)
+
+# --- S4 System Example ---
+
+# Load necessary package
+setClass("Student", 
+         slots = list(name = "character", age = "numeric", GPA = "numeric"))
+
+# Create an S4 object
+student_s4 <- new("Student", name = "John Doe", age = 22, GPA = 3.8)
+
+# Display the object
+student_s4
+
+# Check if the object belongs to S4
+isS4(student_s4)
+
+# Determine the base type of objects
+typeof(mtcars)      # Base type of dataset
+typeof(student_s3)  # Base type of S3 object
+typeof(student_s4)  # Base type of S4 object
