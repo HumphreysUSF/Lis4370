@@ -1,12 +1,12 @@
 Package: Humphreys
 Title: Tools for Visualizing and Analyzing Time Series Data
 Version: 0.0.0.9000
-Authors@R: person("First", "Last", email = "first.last@example.com", role = c("aut", "cre"))
+Authors@R: person("Matthew", "Humphreys", email = "matthewhumphreys@usf.edu", role = c("aut", "cre"))
 Description: This package provides functions to simplify the process of importing, 
     visualizing, and analyzing time series datasets in R. It includes pre-built 
     templates using ggplot2 for quick plotting, tools for calculating rolling 
     statistics, and wrappers for building basic predictive models such as linear 
-    regression or SVM. Designed for students or analysts learning R, Friedman helps 
+    regression or SVM. Designed for students or analysts learning R, Humphreys helps 
     turn raw time series data into meaningful visual stories.
 Depends: R (>= 3.1.2)
 Imports: ggplot2, dplyr, tidyr, zoo
