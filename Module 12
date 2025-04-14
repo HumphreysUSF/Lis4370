@@ -1,0 +1,53 @@
+---
+title: "Final Project Function Documentation"
+author: "Matthew Humphreys"
+date: "`r Sys.Date()`"
+output: html_document
+---
+
+# Final Project Function Documentation
+
+This file describes and documents the key functions created for my final R project. It includes function definitions, their purpose, inputs, outputs, and examples to demonstrate usage.
+
+---
+
+## Function 1: `clean_data()`
+
+**Purpose:**  
+Cleans and prepares raw data by converting column names to lowercase, converting character columns to factors, and dropping rows with missing values.
+
+**Inputs:**  
+- `df`: A data frame containing the raw dataset.
+
+**Outputs:**  
+- A cleaned data frame ready for analysis.
+
+**Code:**
+
+```r
+clean_data <- function(df) {
+  df <- df %>%
+    dplyr::rename_all(tolower) %>%
+    dplyr::mutate_if(is.character, as.factor) %>%
+    tidyr::drop_na()
+  return(df)
+}
+
+summarize_data <- function(df, cols) {
+  df %>%
+    dplyr::select(all_of(cols)) %>%
+    dplyr::summarise_all(list(
+      mean = ~mean(., na.rm = TRUE),
+      median = ~median(., na.rm = TRUE),
+      sd = ~sd(., na.rm = TRUE)
+    ))
+}
+
+
+generate_plot <- function(df, x_var, y_var, group_var = NULL) {
+  library(ggplot2)
+  p <- ggplot(df, aes_string(x = x_var, y = y_var, color = group_var)) +
+    geom_point(size = 3, alpha = 0.7) +
+    theme_minimal()
+  return(p)
+}
